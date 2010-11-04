@@ -7,8 +7,10 @@ Solves a common pattern in models, i.e. specifying how unique identifiers are ge
 
 In your ActiveRecord model:
 
-	has_identifier(:column_name) do
-		SecureRandom.hex(16)
+	class Authorisation < Activerecord::Base
+
+		has_identifier(:column_name) { SecureRandom.hex(16) }
+
 	end
 	
 or
