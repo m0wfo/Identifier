@@ -1,0 +1,22 @@
+= Identifier
+
+Solves a common pattern in models, i.e. specifying how unique identifiers are generated for a certain column. For example if a User has a UUID, or an Authorisation has a unique access_token.
+
+
+== Usage
+
+In your ActiveRecord model:
+
+	has_identifier(:column_name) do
+		SecureRandom.hex(16)
+	end
+	
+or
+
+	has_identifier(:column_name) do
+		UUID.new.generate
+	end
+
+You get the idea :) Declaring has_identifier also protects :column_name from mass-assignment.
+
+Copyright (c) 2010 Chris Mowforth, released under the MIT license
